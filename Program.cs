@@ -12,8 +12,8 @@ namespace ChenillardConsole
         static void Main(string[] args)
         {
             //Chenillard Console 
-            int counter = 0;
             int speedCmd = 500;
+            string LED = null;
             string command = null;
             Boolean loopContinue = true;
             Console.WriteLine($@"=============***>>>>>>>                            <<<<<<<<<<<******==========
@@ -22,7 +22,7 @@ namespace ChenillardConsole
 
             while (true && loopContinue== true)
             {
-                Console.WriteLine("Start the chenillard by pressing [V], stop chenillard with [C], select your speed with [S]. To quit, press [Q]. Actual speed : " + chenillardContol.speed + "ms");
+                Console.WriteLine("Start the chenillard by pressing [V], stop chenillard with [C], select your speed with [S]. To quit, press [Q]. To change Order, press [O]. Actual speed : " + chenillardContol.speed + "ms");
                 command = Console.ReadLine();
                 switch (command)
                 {
@@ -37,6 +37,24 @@ namespace ChenillardConsole
                         speedCmd = Convert.ToInt32(Console.ReadLine());
                         chenillardContol.speed = speedCmd;
                         break;
+                    case "O":
+                        Console.WriteLine("Choose Order :");
+                        Console.WriteLine("LED1 :");
+                        LED = Console.ReadLine();
+                        chenillardContol.Led1 = LED;
+                        Console.WriteLine("LED2 :");
+                        LED = Console.ReadLine();
+                        chenillardContol.Led2 = LED;
+                        Console.WriteLine("LED3 :");
+                        LED = Console.ReadLine();
+                        chenillardContol.Led3 = LED;
+                        Console.WriteLine("LED4 :");
+                        LED = Console.ReadLine();
+                        chenillardContol.Led4 = LED;
+
+                        chenillardContol.changeOrder();
+                        break;
+
                     case "Q":
                         Console.WriteLine("Exiting..");
                         loopContinue = false;
@@ -44,9 +62,6 @@ namespace ChenillardConsole
                 }
 
 
-                //Console.WriteLine("Start Chenillard");
-
-                //chenillardContol.startChenillard();
             }
 
             Console.WriteLine("End... ");
